@@ -5,10 +5,11 @@ const TodoList = (props) => {
 	const todo = props.todo;
 	console.log("this is from TDL", todo);
 	const setTodo = props.setTodo;
+	const filteredTodos = props.filteredTodos;
 	return (
 		<div>
 			<ul>
-				{todo.map((todoItem) => (
+				{filteredTodos.map((todoItem) => (
 					<Todo
 						text={todoItem.text}
 						key={todoItem.id}

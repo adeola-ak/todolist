@@ -15,10 +15,31 @@ const Todo = (props) => {
 		setTodo(todo.filter((ele) => ele.id !== todoItem.id));
 	};
 
+	const completeHandler = () => {
+		setTodo(
+			todo.map((item) => {
+				if (item.id === todoItem.id) {
+					return {
+						...item,
+						completed: !item.completed,
+					};
+				}
+				return item;
+			})
+		);
+	};
+
 	return (
 		<div>
-			<li key={id}>{todoText}</li>
-			<button>add</button>
+			<li
+				key={id}
+				className={`todo-${
+					todoItem.completed ? "complete" : "incomplete"
+				}`}
+			>
+				{todoText}
+			</li>
+			<button onClick={completeHandler}>add</button>
 			<button onClick={deleteHandler}>delete</button>
 		</div>
 	);

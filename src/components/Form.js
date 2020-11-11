@@ -5,6 +5,7 @@ const Form = (props) => {
 	const setInputText = props.setInputText;
 	const todo = props.todo;
 	const setTodo = props.setTodo;
+	const setStatus = props.setStatus;
 
 	const inputTextHandler = (e) => {
 		//this will console log the event -> and the inpt from said event
@@ -24,6 +25,10 @@ const Form = (props) => {
 		]);
 		setInputText("");
 	};
+
+	const statusHandler = (e) => {
+		setStatus(e.target.value);
+	};
 	return (
 		<form>
 			<input value={inputText} onChange={inputTextHandler} type="text" />
@@ -31,7 +36,7 @@ const Form = (props) => {
 				submit
 			</button>
 			<div>
-				<select>
+				<select onChange={statusHandler}>
 					<option value="all">all</option>
 					<option value="completed">completed</option>
 					<option value="uncompleted">uncompleted</option>
